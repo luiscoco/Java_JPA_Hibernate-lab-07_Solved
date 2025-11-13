@@ -14,7 +14,7 @@ public class CompanyService {
     @PersistenceContext
     private EntityManager em;
 
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRED)
     public void init() {
         String[] companies = {"Microsoft", "IBM"};
         for (String name : companies) {
@@ -24,7 +24,7 @@ public class CompanyService {
         }
     }
 
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = true)
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     public Company getCompany(int id) {
         return em.find(Company.class, id);
     }
